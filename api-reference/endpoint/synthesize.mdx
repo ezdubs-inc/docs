@@ -1,0 +1,43 @@
+---
+title: "Synthesize Audio"
+api: "POST /synthesize"
+description: "This endpoint synthesizes audio based on provided text and audio prompts."
+---
+
+### Body
+
+<ParamField body="audio_prompts" type="file">
+  The audio prompts file to be uploaded.
+</ParamField>
+
+<ParamField body="text" type="string">
+  The text for synthesis.
+</ParamField>
+
+<ParamField body="text_prompts" type="string" optional>
+  Additional text prompts for synthesis. Optional.
+</ParamField>
+
+<ParamField body="top_k" type="int" default="-100">
+  Top K value for synthesis. Defaults to -100.
+</ParamField>
+
+<ParamField body="temperature" type="float" default="1.0">
+  Temperature for synthesis. Defaults to 1.0.
+</ParamField>
+
+<ParamField body="continual" type="bool" default="false">
+  Continual synthesis flag. Defaults to false.
+</ParamField>
+
+### Response
+
+If successful, this endpoint returns an audio file in the WAV format.
+
+If unsuccessful, the response contains an error message:
+
+```json Response
+{
+  "status": "error",
+  "error": "<error_message>"
+}
